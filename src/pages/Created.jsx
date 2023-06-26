@@ -5,11 +5,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 export default function Submitted() {
 
     const location = useLocation();
-    const navigate = useNavigate();
     let status
     try {
         const data = location.state;
-        const link = `${process.env.R_DEPLOYED_URL}/${data.clip_id}`
+        const link = `https://clipher.netlify.app/${data.clip_id}`
         status = `Clipboard is generated. You can access it with this link : ${link}`
     } catch (error) {
         status = "Something went wrong"

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 
 export default function ClipValue(clip_id) {
-    const URL = `${process.env.R_DEPLOYED_URL}/${clip_id.clip_id}`;
+    const URL = `https://clipher-backend.onrender.com/${clip_id.clip_id}`;
     
     const [value, setValue] = useState({});
 
