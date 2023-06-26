@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
+import { DEPLOYED_URL } from '../helper';
+
 export default function ClipValue(clip_id) {
-    const URL = `http://localhost:5000/${clip_id.clip_id}`;
+    const URL = `${DEPLOYED_URL}/${clip_id.clip_id}`;
     
     const [value, setValue] = useState({});
 
@@ -27,10 +29,3 @@ export default function ClipValue(clip_id) {
         </div>
     )
 }
-
-
-// const getDesc = () => {
-//     const response =  fetch(`http://localhost:5000/${temp}`);
-//     const jsonData =  response.json();
-//     return jsonData;
-// }

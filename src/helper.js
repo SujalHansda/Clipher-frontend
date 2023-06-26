@@ -1,0 +1,1 @@
+export const DEPLOYED_URL = 'https://clipher-backend.onrender.com';
