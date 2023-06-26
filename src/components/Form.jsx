@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { DEPLOYED_URL } from '../helper';
 
 export default function Form() {
 
@@ -20,7 +19,7 @@ export default function Form() {
     async function handleOnSubmit(e) {
         e.preventDefault()
         try { // /create/:clip_id
-            const response = await fetch(`${DEPLOYED_URL}/create/`, {
+            const response = await fetch(`${process.env.R_DEPLOYED_URL}/create/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(newClip)

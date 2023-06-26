@@ -1,7 +1,6 @@
 import "../styles.scss"
 import Head from "../components/Head"
 import { useLocation, useNavigate } from 'react-router-dom';
-import { DEPLOYED_URL } from '../helper';
 
 export default function Submitted() {
 
@@ -10,7 +9,7 @@ export default function Submitted() {
     let status
     try {
         const data = location.state;
-        const link = `${DEPLOYED_URL}/${data.clip_id}`
+        const link = `${process.env.R_DEPLOYED_URL}/${data.clip_id}`
         status = `Clipboard is generated. You can access it with this link : ${link}`
     } catch (error) {
         status = "Something went wrong"
