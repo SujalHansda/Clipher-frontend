@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 export default function Form() {
+
+    const navigate = useNavigate();
+
     const [newClip, setNewClip] = useState({ clip_id: "", description: "" })
 
 
@@ -19,10 +23,13 @@ export default function Form() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(newClip)
             })
-            // console.log("-------------")
             console.log(response)
+            if (response.status === 200) { 
+                navigate('/created', { state: { clip_id: newClip.clip_id } }) 
+            }
         } catch (err) {
             console.log(err.message)
+            navigate('/error')
         }
     }
 
@@ -37,14 +44,3 @@ export default function Form() {
         </form>
     )
 }
-
-// return (
-//     <div className="flex-column ">
-//         <label for="title">Title <span className="subscript">[should be less than 20 charcters]</span> </label>
-//         <input type="text" id="title" />
-//         <br />
-//         <label for="description">Write here <span className="subscript">[should be less than 2000 charcters]</span> </label>
-//         <textarea id="description" rows="5" cols="60"></textarea>
-//         <button>Create</button>
-//     </div>
-// )
