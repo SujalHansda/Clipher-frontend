@@ -6,7 +6,7 @@ export default function Form() {
     const navigate = useNavigate();
 
     const [newClip, setNewClip] = useState({ clip_id: "", description: "" })
-
+    const [loading, setLoading] = useState(false)
 
     function updateClipId(e) {
         setNewClip({ ...newClip, clip_id: e.target.value })
@@ -18,6 +18,7 @@ export default function Form() {
     }
     async function handleOnSubmit(e) {
         e.preventDefault()
+        setLoading(true)
         try { // /create/:clip_id
             const response = await fetch(`https://clipher-backend.onrender.com/create/`, {
                 method: "POST",
@@ -42,6 +43,7 @@ export default function Form() {
             <label htmlFor="description">Write here <span className="subscript">[should be less than 2000 charcters]</span> </label>
             <textarea id="description" rows="5" cols="60" onChange={updateDescription}></textarea>
             <button>Create</button>
+            <>{loading ? <img src="https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" alt="Loading.." /> : null }</>
         </form>
     )
 }
